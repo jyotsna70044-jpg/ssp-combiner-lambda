@@ -1,32 +1,27 @@
-#name: Deploy Lambda to S3
-#
-#on:
-#  push:
-#    branches:
-#      - main
-#      - dev
-#
-#jobs:
-#  build-and-upload:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v4
-#
-#      - name: Configure AWS Credentials
-#        uses: aws-actions/configure-aws-credentials@v4
-#        with:
-#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#          aws-region: ${{ secrets.AWS_REGION }}
-#
-#      - name: Download from S3 Bucket
-#        run: aws s3 cp ssp-combiner-lambda.zip s3://${{ secrets.LAMBDA_S3_BUCKET_NAME }}/lambda-builds/ssp-combiner-lambda.zip
-#
-#      - name: Deploy Lambda Function from S3
-#        uses: aws-actions/aws-lambda-deploy@v1
-#        with:
-#          function-name: ${{ secrets.LAMBDA_FUNCTION_NAME }}
-#          deploy-via-s3: true
-#          s3-bucket: ${{ secrets.S3_BUCKET_NAME }}
-#          s3-key: lambda-builds/latest.zip
+name: Deploy Lambda to S3
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy Lambda Function from S3
+        uses: aws-actions/aws-lambda-deploy@v1
+        with:
+          function-name: ${{ secrets.LAMBDA_FUNCTION_NAME }}
+          deploy-via-s3: true
+          s3-bucket: ${{ secrets.LAMBDA_ARTIFACT_S3_BUCKET_NAME }}
+          s3-key: lambda-builds/ssp-combiner-lambda.zip
