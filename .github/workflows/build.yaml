@@ -1,4 +1,5 @@
 name: Build Lambda to S3
+run-name: Build and test application
 
 on:
   push:
