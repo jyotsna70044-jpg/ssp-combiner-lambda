@@ -24,7 +24,8 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Upload to S3 Bucket
-        run: aws s3 cp ssp-combiner-lambda.zip s3://${{ secrets.LAMBDA_S3_BUCKET_NAME }}/lambda-builds/ssp-combiner-lambda.zip
+        run: aws s3 cp ssp-combiner-lambda.zip s3://${{ secrets.LAMBDA_ARTIFACT_S3_BUCKET_NAME }}/lambda-builds/ssp-combiner-lambda.zip
+
 
 #      - name: Deploy Lambda Function from S3
 #        uses: aws-actions/aws-lambda-deploy@v1
