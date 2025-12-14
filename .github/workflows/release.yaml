@@ -30,7 +30,7 @@ jobs:
         uses: aws-actions/aws-lambda-deploy@v1
         with:
           function-name: ${{ secrets.LAMBDA_FUNCTION_NAME }}
-          deploy-via-s3: true
+#          deploy-via-s3: true
 #          s3-bucket: ${{ secrets.LAMBDA_ARTIFACT_S3_BUCKET_NAME }}
 #          s3-key: lambda-builds/ssp-combiner-lambda.zip
           s3-bucket: ssp-lambda-artifact
