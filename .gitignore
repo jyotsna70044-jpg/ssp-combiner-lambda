@@ -1,0 +1,33 @@
+# Byte-code files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.egg-info/
+.eggs/
+
+# Virtual environment
+venv/
+env/
+.venv/
+lib/python*/site-packages/
+
+# Editor/IDE-specific files
+.idea/          # For PyCharm/IntelliJ
+.vscode/        # For VS Code
+*.swp
+*~
+.DS_Store       # For macOS
+Thumbs.db       # For Windows
+
+# Testing
+.pytest_cache/
+.coverage
+
+# Miscellaneous
+dist/
+build/
+logs/
+*.log
+pip-wheel-metadata/
+share/python/
